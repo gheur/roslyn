@@ -149,7 +149,9 @@ function pack_all() {
 function stop_processes {
   echo "Killing running build processes..."
   pkill -9 "dotnet"
+  echo "Killing more"
   pkill -9 "vbcscompiler"
+  echo "Killing done"  
 }
 
 if [[ "$build_in_docker" = true ]]
@@ -191,6 +193,7 @@ then
 
     dotnet clean Compilers.sln 
     stop_processes
+    echo "Killing done for good"  
 fi
 
 if [[ "${use_bootstrap}" == true ]]
